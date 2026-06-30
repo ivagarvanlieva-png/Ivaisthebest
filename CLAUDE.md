@@ -94,3 +94,12 @@ Madrid, Spain — initial launch market. Expand later.
 - Background checks
 - Complex pricing algorithms
 - Multi-city support
+
+## Memory System
+
+This project uses a persistent memory system. See `memory/project_memory-protocol.md` for the full rules. In short:
+
+- When Iva corrects me or says "remember this," save it as its own `.md` file in `memory/`, prefixed `user_`, `project_`, `feedback_`, or `reference_`, and add a one-line row to `memory/MEMORY.md`.
+- `memory/lessons.md` — narrative log of strategic learnings; append on "lesson"/"pattern" or repeated corrections.
+- `tasks/todo.md` — the active sprint; plan there before building.
+- At the start of every session, read `memory/MEMORY.md`, `memory/lessons.md`, and `tasks/todo.md`.

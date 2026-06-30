@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"${CLAUDE_PROJECT_DIR:-.}\" && out=\"\"; for f in memory/MEMORY.md memory/lessons.md tasks/todo.md; do if [ -f \"$f\" ]; then out=\"$out\\n===== $f =====\\n$(cat \"$f\")\\n\"; fi; done; printf '%s' \"$out\" | jq -Rs '{hookSpecificOutput:{hookEventName:\"SessionStart\",additionalContext:.}}' 2>/dev/null || true",
+            "statusMessage": "Loading project memory"
+          }
+        ]
+      }
+    ]
+  }
+}
