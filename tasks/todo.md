@@ -10,6 +10,7 @@ Plan here before building. Mark items complete as we ship.
 - [x] Build coming-soon landing page (`index.html`)
 - [x] Build full product landing page (`landing.html`)
 - [x] Set up memory system (`memory/`, `tasks/todo.md`, SessionStart hook)
+- [x] Draft `PRD.md` (Lovable v1 app plan, scoped to core marketplace loop)
 
 ## Backlog
 - [ ] Settle the open questions in `CLAUDE.md` (commission %, tech stack, disputes, GDPR plan)
