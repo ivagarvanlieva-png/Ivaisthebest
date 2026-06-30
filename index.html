@@ -1,0 +1,420 @@
+<title>iService — Coming Soon in Madrid</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:   #FAFAF8;
+    --ink:     #0D0C0B;
+    --accent:  #C8410A;
+    --muted:   #7C7874;
+    --surface: #EDEAE3;
+    --rule:    #DAD6CF;
+    --max-w:   1100px;
+    --pad:     clamp(1.25rem, 5vw, 3rem);
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  .nav-wrap {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.375rem var(--pad);
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.2rem;
+    font-weight: normal;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .logo em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .nav-pill {
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 0.3rem 0.75rem;
+  }
+
+  /* HERO */
+  .hero {
+    padding: clamp(4rem, 10vh, 7rem) var(--pad) clamp(3rem, 8vh, 5rem);
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.75rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(3rem, 8.5vw, 7.75rem);
+    line-height: 1.01;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 2.25rem;
+    max-width: 13ch;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 1.6vw, 1.175rem);
+    color: var(--muted);
+    max-width: 48ch;
+    line-height: 1.7;
+    margin-bottom: 2.75rem;
+  }
+
+  /* FORM */
+  .form-row {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    align-items: stretch;
+    max-width: 480px;
+  }
+
+  .email-input {
+    flex: 1;
+    min-width: 210px;
+    padding: 0.875rem 1.125rem;
+    border: 1.5px solid var(--rule);
+    border-right: none;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .email-input::placeholder { color: var(--muted); }
+  .email-input:focus { border-color: var(--accent); }
+
+  .submit-btn {
+    padding: 0.875rem 1.5rem;
+    background: var(--accent);
+    color: var(--white);
+    border: 1.5px solid var(--accent);
+    font-size: 0.85rem;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .submit-btn:hover { background: #A33009; border-color: #A33009; }
+  .submit-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .form-note {
+    margin-top: 0.875rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  .success-state {
+    display: none;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.875rem;
+    color: var(--accent);
+    padding-top: 0.25rem;
+  }
+  .success-state::before {
+    content: '';
+    display: inline-block;
+    width: 1.25rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* RULE */
+  .full-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    padding: clamp(3rem, 7vh, 5.5rem) var(--pad);
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3rem;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem 5rem;
+  }
+
+  @media (max-width: 600px) {
+    .two-col {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-head {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+  }
+
+  .card-body {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    max-width: 36ch;
+  }
+
+  .step-list {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    list-style: none;
+  }
+
+  .step-list li {
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .step-list li::before {
+    content: '–';
+    color: var(--accent);
+    margin-top: 0.05em;
+  }
+
+  /* BOTTOM CTA */
+  .bottom-wrap {
+    background: var(--surface);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .bottom {
+    padding: clamp(3.5rem, 8vh, 6rem) var(--pad);
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: end;
+  }
+
+  @media (max-width: 680px) {
+    .bottom {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .bottom-headline {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.6rem, 3.25vw, 2.5rem);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+
+  .bottom-form {
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 1.5rem var(--pad);
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: var(--ink);
+  }
+  .footer-logo em { font-style: normal; color: var(--accent); }
+
+  .footer-note {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav>
+    <div class="logo"><em>i</em>Service</div>
+    <div class="nav-pill">Madrid · Coming soon</div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow">Any task. Any time.</p>
+  <h1>Someone in Madrid can do <em>that.</em></h1>
+  <p class="hero-sub">
+    iService is a marketplace for getting things done. Post what you need — a delivery, a repair, a favour — or earn by helping others. Verified providers. Secure payments. Around the clock.
+  </p>
+
+  <form id="heroForm" onsubmit="submitForm('heroForm', 'heroSuccess', event)">
+    <div class="form-row">
+      <input class="email-input" type="email" placeholder="Your email address" autocomplete="email" required>
+      <button class="submit-btn" type="submit">Notify me</button>
+    </div>
+    <p class="form-note">We'll let you know the moment iService goes live. Nothing else.</p>
+    <div class="success-state" id="heroSuccess">You're on the list. We'll be in touch.</div>
+  </form>
+</section>
+
+<hr class="full-rule">
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="section-label">How it works</p>
+  <div class="two-col">
+
+    <div>
+      <span class="card-tag">Need something done</span>
+      <h2 class="card-head">Post a task,<br>get it handled.</h2>
+      <p class="card-body">Describe what you need, set your budget, and choose your timeline. Verified providers in Madrid see your post and take it on — or browse profiles and hire directly.</p>
+      <ul class="step-list">
+        <li>Post your task with details and budget</li>
+        <li>Browse providers or receive offers</li>
+        <li>Pay securely through the app</li>
+        <li>Rate your provider when it's done</li>
+      </ul>
+    </div>
+
+    <div>
+      <span class="card-tag">Want to earn</span>
+      <h2 class="card-head">Offer your time,<br>set your terms.</h2>
+      <p class="card-body">Create a verified profile, list what you can do, and start picking up jobs near you. Any skill counts. You decide when and how much you work.</p>
+      <ul class="step-list">
+        <li>Verify your identity and create your profile</li>
+        <li>Browse open tasks or let clients find you</li>
+        <li>Complete the job, receive payment</li>
+        <li>Build your reputation through reviews</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-wrap">
+  <div class="bottom">
+    <h2 class="bottom-headline">Be first when iService launches in Madrid.</h2>
+    <div class="bottom-form">
+      <form id="bottomForm" onsubmit="submitForm('bottomForm', 'bottomSuccess', event)">
+        <div class="form-row">
+          <input class="email-input" type="email" placeholder="Your email" autocomplete="email" required>
+          <button class="submit-btn" type="submit">Join the list</button>
+        </div>
+        <div class="success-state" id="bottomSuccess">You're on the list.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><em>i</em>Service</div>
+  <div class="footer-note">Madrid, Spain &mdash; 2026</div>
+</footer>
+
+<script>
+  function submitForm(formId, successId, e) {
+    e.preventDefault();
+    var form = document.getElementById(formId);
+    form.querySelector('.form-row').style.display = 'none';
+    var note = form.querySelector('.form-note');
+    if (note) note.style.display = 'none';
+    var success = document.getElementById(successId);
+    success.style.display = 'flex';
+  }
+</script>
